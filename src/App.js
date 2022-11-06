@@ -1,23 +1,47 @@
-import logo from './logo.svg';
-import './App.css';
+import { useEffect } from "react";
+import {
+  BrowserRouter,
+  Routes,
+  Route,
+  Link,
+  useParams,
+  useMatch,
+  useLocation,
+  useNavigate,
+  
+} from "react-router-dom";
 
 function App() {
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <BrowserRouter>
+      <Routes>
+        <Route path="/" element={<div>home</div>} />
+        <Route path="users/*" element={<Users />} />
+      </Routes>
+    </BrowserRouter>
+  );
+}
+
+const Users =({path}) =>{
+  const params = useParams();
+  const match = useLocation();
+  const match1 = useMatch("/users/me/d");
+  const navigate= useNavigate();
+  // useEffect(()=>{
+  //   navigate("/users/me",{data:"22"})
+  // },[])
+  console.log(params,match,match1)
+  return (
+    <div>
+      <nav>
+        <Link to="me">My Profile</Link>
+      </nav>
+
+      <Routes>
+        <Route path="*" element={<div>404</div>}/>
+        <Route path="me" element={<div>me</div>} />
+      </Routes>
     </div>
   );
 }
