@@ -12,11 +12,5 @@ pipeline {
             }
         }
     }
-        stages {
-        stage('start') { 
-            steps {
-                sh 'npm start' 
-            }
-        }
     }
 }
