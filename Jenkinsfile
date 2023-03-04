@@ -5,10 +5,6 @@ pipeline {
             args '-p 3000:3000' 
         }
     }
-     options { skipDefaultCheckout() }
-    environment {
-        HOME = '.'
-    }
     stages {
         stage('Build') { 
             steps {
